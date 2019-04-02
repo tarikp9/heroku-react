@@ -21,10 +21,11 @@ jobs:
 workflows:
   version: 2
 
-    jobs:
-      
+              jobs:
+      - build
       - deploy:
-       
+          requires:
+            - build
           filters:
             branches:
               only: master
