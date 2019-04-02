@@ -23,6 +23,8 @@ jobs:
 
       - run: yarn test
       - run:
+      name: Show current branch
+    command: echo ${CIRCLE_BRANCH}
           name: Deploy Master to Heroku
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
@@ -38,3 +40,4 @@ workflows:
           filters:
             branches:
               only: master
+              only: staging
