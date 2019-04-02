@@ -14,14 +14,15 @@ jobs:
       - run: npm install
       - run: yarn test
 deploy:
-  docker:
-    - image: buildpack-deps:trusty
-  steps:
-    - checkout
-    - run:
-        name: Deploy Master to Heroku
-        command: |
-          git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:27439480-bab8-4d2e-9b74-4031dea4477f@git.heroku.com/newApp.git master
+
 
 workflows:
   version: 2
