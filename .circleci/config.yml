@@ -22,7 +22,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test
-
       - run:
           name: Deploy Master to Heroku
           command: |
