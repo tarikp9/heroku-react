@@ -1,4 +1,14 @@
 version: 2.1
+
+commands:
+  sayhello:
+    description: "A very simple command for demonstration purposes"
+    parameters:
+      to:
+        type: string
+        default: "Hello World"
+    steps:
+      - run: echo << parameters.to >>
 jobs:
   build:
     docker:
@@ -9,6 +19,8 @@ jobs:
       - checkout
       - run: npm install
       - run: yarn test
+      - sayhello:
+          to: "Lev"
 
   deploy:
     docker:
