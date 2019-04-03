@@ -9,7 +9,6 @@ commands:
         default: "git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME2.git stage:master"
     steps:
       - run: echo << parameters.to >>
-
 jobs:
   build:
     docker:
@@ -36,9 +35,8 @@ jobs:
       - image: circleci/node:10.13.0
     steps:
       - checkout
-      - run:
-          name: Deploy Stage to Heroku
-          command: sayhello
+      - sayhello:
+          to: "git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME2.git stage:master"
 
 workflows:
   version: 2.1
