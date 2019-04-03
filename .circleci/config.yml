@@ -6,9 +6,10 @@ commands:
     parameters:
       to:
         type: string
-        default: "Hello World"
+        default: "git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME2.git stage:master"
     steps:
       - run: echo << parameters.to >>
+
 jobs:
   build:
     docker:
@@ -19,8 +20,6 @@ jobs:
       - checkout
       - run: npm install
       - run: yarn test
-      - sayhello:
-          to: "Lev"
 
   deploy:
     docker:
@@ -39,8 +38,7 @@ jobs:
       - checkout
       - run:
           name: Deploy Stage to Heroku
-          command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME2.git stage:master
+          command: sayhello
 
 workflows:
   version: 2.1
