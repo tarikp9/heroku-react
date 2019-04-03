@@ -7,9 +7,9 @@ commands:
       to:
         type: string
         default: "git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME2.git stage:master"
-      steps:
-        - run:
-            command: << parameters.to >>
+    steps:
+      - run:
+          command: << parameters.to >>
 
 jobs:
   build:
@@ -37,7 +37,8 @@ jobs:
       - image: circleci/node:10.13.0
     steps:
       - checkout
-      - sayhello
+      - sayhello:
+          to: "git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME2.git stage:master"
 
 workflows:
   version: 2.1
