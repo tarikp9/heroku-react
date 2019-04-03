@@ -1,26 +1,8 @@
-version: 2.1
-jobs:
-  build:
-    docker:
-      - image:  circleci/node:10.13.0
-    steps:
-      - checkout
-      - run: 
-        name: Deploy Master to Heroku
-          command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-  test:
-    docker:
-      - image: circleci/<language>:<version TAG>
-    steps:
-      - checkout
-      - run:   
-       name: Deploy Master to Heroku2
-          command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME2.git master
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test
+machine:
+  node:
+    version: 10.13.0
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: create11
