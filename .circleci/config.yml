@@ -4,12 +4,12 @@ commands:
   sayhello:
     description: "A very simple command for demonstration purposes"
     parameters:
-      t:
+      to:
         type: string
         default: "git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME2.git stage:master"
       steps:
         - run:
-            command: << parameters.t >>
+            command: << parameters.to >>
 
 jobs:
   build:
