@@ -10,9 +10,9 @@ commands:
       second:
         type: string
         default: "HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME2.git stage:master"
-        steps:
-      - run:
-          command: << parameters.to >> << parameters.to >>
+      steps:
+        - run:
+            command: << parameters.first >> << parameters.second >>
 
 jobs:
   build:
@@ -41,7 +41,8 @@ jobs:
     steps:
       - checkout
       - sayhello:
-          to: "git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME2.git stage:master"
+          to: "git push https://heroku:$"
+          second: "HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME2.git stage:master"
 
 workflows:
   version: 2.1
